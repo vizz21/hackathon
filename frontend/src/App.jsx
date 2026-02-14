@@ -1,8 +1,10 @@
+import VoiceInput from './VoiceInput.jsx'
 import { useState, useEffect } from 'react'
 import { useMeetingStore } from './store.js'
 import ActionPanel from './ActionPanel.jsx'
 import DecisionsPanel from './DecisionsPanel.jsx'
 import StatsPanel from './StatsPanel.jsx'
+
 
 export default function App() {
   const { meetingState, sendTranscript, isConnected } = useMeetingStore()
@@ -35,6 +37,8 @@ export default function App() {
           {/* LEFT COLUMN: Input + Sarah's Interventions */}
           <div className="lg:col-span-1 space-y-6">
             {/* Transcript Input Box */}
+            {/* After the transcript textarea,  */}
+              
             <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border border-white/20 shadow-2xl">
               <h3 className="text-white font-semibold mb-3 flex items-center gap-2">
                 💬 Meeting Transcript
@@ -51,6 +55,7 @@ export default function App() {
                 placeholder="Type conversation here...&#10;&#10;Example:&#10;'Sarah will send budget by Friday'&#10;&#10;Press Enter to analyze"
                 className="w-full h-40 p-4 bg-white/5 border border-white/20 rounded-xl text-white placeholder-white/40 resize-none focus:ring-2 focus:ring-blue-400 focus:outline-none"
               />
+              
               <button
                 onClick={handleSend}
                 disabled={!input.trim()}
@@ -59,7 +64,7 @@ export default function App() {
                 🚀 Analyze with Sarah
               </button>
             </div>
-            
+            <VoiceInput />
             {/* Sarah's Recent Interventions */}
             <div className="bg-white/10 backdrop-blur-lg p-6 rounded-2xl border border-white/20 shadow-2xl">
               <h3 className="text-white font-semibold mb-3">🎤 Sarah Says...</h3>
