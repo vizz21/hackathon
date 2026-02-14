@@ -11,7 +11,10 @@ export const useMeetingStore = create((set, get) => ({
     sentiment: 'neutral',
     energy: 'medium'
   },
-  setMeetingState: (newState) => set({ meetingState: newState }),
+  setMeetingState: (newState) => {
+    console.log('📊 Updating meeting state:', newState)
+    set({ meetingState: newState })
+  },
   sendTranscript: async (transcript) => {
     try {
       const ws = new WebSocket('ws://localhost:8000/ws')

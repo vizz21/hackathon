@@ -85,7 +85,7 @@ export default function App() {
                       <div className="text-white text-sm">{intervention.content}</div>
                       <div className="text-xs text-white/60 mt-2 flex justify-between">
                         <span>👤 {intervention.speaker}</span>
-                        <span>✨ {Math.round(intervention.confidence * 100)}%</span>
+                        <span>✨ {Math.round((intervention.confidence || 0.9) * 100)}%</span>
                       </div>
                     </div>
                   ))

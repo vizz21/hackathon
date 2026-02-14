@@ -41,28 +41,43 @@ export default function VoiceInput() {
         setStatus('Listening...')
       }
       
-      ws.onmessage = (event) => {
-        const data = JSON.parse(event.data)
-        console.log('📥 Received from backend:', data)
-        
-        if (data.type === 'transcription') {
-          // Update transcript
-          setTranscript(prev => prev + ' ' + data.transcript)
-          
-          // Update meeting state with Sarah's analysis
-          setMeetingState({
-            ...meetingState,
-            interventions: [
-              ...meetingState.interventions,
-              ...(data.interventions || [])
-            ],
-            actions: data.state?.actions || meetingState.actions,
-            decisions: data.state?.decisions || meetingState.decisions,
-            sentiment: data.state?.sentiment || meetingState.sentiment,
-            energy: data.state?.energy || meetingState.energy
-          })
-        }
-      }
+    ws.onmessage = (event) => {
+  const data = JSON.parse(event.data)
+  console.log('📥 Received from backend:', data)
+  
+  if (data.type === 'transcription') {
+    console.log('✅ Transcription received:', data.transcript)
+    console.log('✅ Interventions:', data.interventions)
+    console.log('✅ State:', data.state)
+    
+    // Update transcript
+    setTranscript(prev => prev + ' ' + data.transcript)
+    
+    // Get current state
+    const currentState = useMeetingStore.getState().meetingState
+    console.log('📊 Current state before update:', currentState)
+    
+    // Update meeting state with Sarah's analysis
+    const newState = {
+      ...currentState,
+      interventions: [
+        ...currentState.interventions,
+        ...(data.interventions || [])
+      ],
+      actions: data.state?.actions || currentState.actions,
+      decisions: data.state?.decisions || currentState.decisions,
+      sentiment: data.state?.sentiment || currentState.sentiment,
+      energy: data.state?.energy || currentState.energy
+    }
+    
+    console.log('📊 New state after update:', newState)
+    
+    // Use the setter method
+    useMeetingStore.getState().setMeetingState(newState)
+    
+    console.log('✅ State updated successfully')
+  }
+}
       
       ws.onerror = (error) => {
         console.error('❌ WebSocket error:', error)
