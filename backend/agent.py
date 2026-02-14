@@ -66,6 +66,7 @@ async def analyze_transcript(transcript:str, context: dict=None):
 
       response = client.chat.completions.create(
           model="openai/gpt-oss-120b:free",
+        #   model="nemotron-3-nano-30b-a3b:free",
           messages=messages,
           response_format={"type": "json_object"}
 

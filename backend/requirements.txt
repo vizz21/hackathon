@@ -4,3 +4,4 @@ openrouter
 python-dotenv
 websockets
 pydantic
+faster-whisper==0.10.0
