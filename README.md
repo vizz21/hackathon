@@ -6,7 +6,10 @@
 
 Sarah is an intelligent meeting assistant that listens to conversations in real-time, extracts action items, tracks decisions, monitors participation, and intervenes contextually to improve meeting productivity.
 
-![Sarah Dashboard](./screenshots/dashboard.png)
+<img width="1755" height="1664" alt="image" src="https://github.com/user-attachments/assets/26b114f7-da84-4d32-a30a-ef9ddc7c132b" />
+![Screenshot_15-2-2026_18953_localhost](https://github.com/user-attachments/assets/334198bc-c134-4e96-8f17-fe4d56f44191)
+
+
 
 ## 🎯 Live Demo
 
