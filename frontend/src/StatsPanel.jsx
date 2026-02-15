@@ -65,10 +65,27 @@ export default function StatsPanel() {
 
         {/* Parking Lot */}
         <div className="p-4 bg-red-500/10 border border-red-400/30 rounded-xl">
-          <div className="text-xs text-red-200 mb-2">🅿️ Parking Lot</div>
-          <div className="text-sm text-white">
-            {parking_lot?.length || 0} items parked
+          <div className="text-xs text-red-200 mb-2 flex items-center justify-between">
+            <span>🅿️ Parking Lot</span>
+            <span className="bg-red-500 text-white px-2 py-0.5 rounded-full text-xs">
+              {parking_lot?.length || 0}
+            </span>
           </div>
+          
+          {parking_lot && parking_lot.length > 0 ? (
+            <div className="space-y-2 max-h-32 overflow-y-auto">
+              {parking_lot.map((item, i) => (
+                <div 
+                  key={i} 
+                  className="text-xs text-white bg-red-500/10 p-2 rounded border border-red-400/20"
+                >
+                  • {item}
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-sm text-white/60">No items parked</div>
+          )}
         </div>
       </div>
     </div>
