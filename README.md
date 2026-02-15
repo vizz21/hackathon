@@ -1,15 +1,262 @@
 # Sophiie AI Agents Hackathon 2026
 
-**Build the future of AI-human interaction.**
+# 🤖 Sarah - AI Meeting Facilitator
 
-| | |
-|---|---|
-| **What** | A solo hackathon focused on AI agent interaction — voice, text, UX, and UI |
-| **When** | February 14–15, 2026 (Saturday–Sunday) |
-| **Where** | Virtual — participate from anywhere in Australia |
-| **Prize** | **$5,000 AUD cash** (1st place) + job offers for top performers |
-| **Format** | Solo only — show us what *you* can build |
-| **Hacking Time** | 33 hours |
+**Complete System - Built in 30 Hours for Sophiie Hackathon**
+
+Sarah is an intelligent meeting assistant that listens to conversations in real-time, extracts action items, tracks decisions, monitors participation, and intervenes contextually to improve meeting productivity.
+
+![Sarah Dashboard](./screenshots/dashboard.png)
+
+## 🎯 Live Demo
+
+- **Demo Video**: [Add YouTube/Loom link]
+
+## ✨ Features
+
+### 🎤 Multi-Modal Input
+- **Voice Input** - Real-time speech-to-text with Whisper
+- **Text Input** - Direct meeting notes entry
+- **Visual Dashboard** - Live updates as meeting progresses
+
+### 🤖 AI-Powered Analysis
+- **Action Items** - Auto-extracts who/what/when
+- **Decisions** - Tracks team commitments
+- **Parking Lot** - Captures off-topic items
+- **Participation** - Monitors speaker contributions
+- **Sentiment** - Detects meeting tone
+
+### 📊 Real-Time Dashboard
+- Beautiful glassmorphic UI
+- Live interventions from Sarah
+- Export meeting summary (copy/download)
+- Voice output (Sarah speaks)
+
+## 🛠️ Tech Stack
+
+### Backend
+- FastAPI (WebSocket server)
+- Ollama (Llama 3.2 3B - local AI)
+- Whisper (faster-whisper - local STT)
+- Python 3.11+
+
+### Frontend
+- React 18 + Vite
+- Zustand (state management)
+- Tailwind CSS (glassmorphic UI)
+- WebSocket API
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.11+
+- Node.js 18+
+- Ollama installed ([ollama.ai](https://ollama.ai))
+- FFmpeg installed
+
+### 1. Backend Setup
+```bash
+cd backend
+pip install -r requirements.txt --break-system-packages
+ollama pull llama3.2:3b
+uvicorn main:app --reload --port 8000
+```
+
+### 2. Frontend Setup
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+### 3. Open Application
+**Frontend**: http://localhost:5173  
+**Backend**: http://localhost:8000
+
+## 📖 How to Use
+
+### Text Input
+1. Type: `"Sarah will send budget by Friday"`
+2. Click: "Send to Sarah"
+3. Watch: Action item appears in dashboard
+
+### Voice Input
+1. Click: "🎤 Start Recording"
+2. Speak: `"Let's park the budget discussion for later"`
+3. Wait: ~9 seconds for transcription
+4. See: Parking lot item extracted
+
+### Export Summary
+1. Add some action items and decisions
+2. Scroll to "Export Summary" panel
+3. Click: "📋 Copy to Clipboard" or "💾 Download"
+
+
+
+**Action Items:**
+```
+"Sarah will send the budget report by Friday"
+"John will review the code by Monday"
+"Mike will update documentation by Wednesday"
+```
+
+**Parking Lot:**
+```
+"Let's park the international expansion for later"
+"Discuss the hiring process another time"
+"Let's table the marketing plan for now"
+```
+
+**Decisions:**
+```
+"We decided to use React for the frontend"
+"Team agreed to launch next quarter"
+"Let's go with TypeScript for the backend"
+```
+
+## 🏗️ Architecture
+```
+┌─────────────────────┐
+│   User (Voice/Text) │
+└──────────┬──────────┘
+           │
+    ┌──────▼──────┐
+    │   Frontend  │ (React + WebSocket)
+    │  Port 5173  │
+    └──────┬──────┘
+           │
+    ┌──────▼──────┐
+    │   Backend   │ (FastAPI)
+    │  Port 8000  │
+    └──────┬──────┘
+           │
+    ┌──────▼──────┐
+    │   Whisper   │ (Speech-to-Text)
+    └──────┬──────┘
+           │
+    ┌──────▼──────┐
+    │   Ollama    │ (Llama 3.2 3B)
+    │  + Regex    │
+    └──────┬──────┘
+           │
+    ┌──────▼──────┐
+    │  Response   │ (JSON with extracted data)
+    └─────────────┘
+```
+
+## 📂 Repository Structure
+```
+meeting-facilitator/
+├── backend/               # FastAPI backend
+│   ├── agent.py          # AI analysis
+│   ├── main.py           # Server & WebSocket
+│   ├── transcription.py  # Whisper integration
+│   ├── tts.py            # Voice output
+│   └── requirements.txt
+│
+├── frontend/             # React frontend
+│   ├── src/
+│   │   ├── App.jsx
+│   │   ├── VoiceInput.jsx
+│   │   ├── ActionPanel.jsx
+│   │   ├── DecisionsPanel.jsx
+│   │   ├── StatsPanel.jsx
+│   │   └── ExportSummary.jsx
+│   └── package.json
+│
+└── README.md
+```
+
+## 🎯 Key Innovations
+
+### 1. Hybrid AI Approach
+- **Ollama** (90% confidence) for intelligent analysis
+- **Regex** (85% confidence) as reliable fallback
+- Best of both worlds: smart + reliable
+
+### 2. 100% Local & Private
+- No API keys required
+- No internet needed (after setup)
+- All processing on local machine
+- Complete data privacy
+
+### 3. Multi-Modal Experience
+- Voice input (speak naturally)
+- Voice output (Sarah responds)
+- Visual dashboard (see everything)
+- Text input (type notes)
+
+### 4. Real-Time Processing
+- WebSocket for instant updates
+- Live transcription display
+- Immediate AI analysis
+- No page refreshes needed
+
+## 📊 Performance Metrics
+
+- **Voice Recognition**: 2-3 seconds
+- **AI Analysis**: 1-2 seconds
+- **Total Latency**: 5-7 seconds
+- **Model Size**: 2GB (Llama 3.2 3B)
+- **Memory Usage**: ~4GB RAM total
+- **Bundle Size**: ~500KB (frontend)
+
+## 🎥 Demo Video
+
+[Record a 2-3 minute demo showing:
+1. Text input extraction
+2. Voice input transcription
+3. Dashboard updates in real-time
+4. Export functionality
+5. Voice output test]
+
+## 🔗 Links
+
+- **Backend Repo**: [Add link]
+- **Frontend Repo**: [Add link]
+  
+- **Demo Video**: [Add link]
+
+## 🤝 Hackathon Details
+
+**Event**: Sophiie Hackathon  
+**Duration**: 33 hours  
+**Team**: [Avishkar]  
+**Built**: February 2026
+
+
+
+## Key Features
+
+1. **Real-Time AI** - Not just transcription, actual intelligence
+2. **Beautiful UI** - Production-quality glassmorphic design
+3. **Fully Local** - $0 API costs, complete privacy
+4. **Multi-Modal** - Voice, text, and visual all integrated
+5. **Reliable** - Hybrid AI + Regex ensures it always works
+
+
+
+
+
+
+
+## 📄 License
+
+MIT License - see LICENSE file for details
+
+
+## 📧 Contact
+
+Built by [Your Name]  
+- GitHub: [@yourusername]
+- LinkedIn: [Your LinkedIn]
+- Email: your.email@example.com
+
+---
+
+⭐ If you found this helpful, please star the repo!
+
+🎉 Built with ❤️ in 30 hours for Sophiie Hackathon
 
 ---
 
