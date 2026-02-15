@@ -16,7 +16,7 @@ Sarah is an intelligent meeting assistant that listens to conversations in real-
 
 ## 🎯 Live Demo
 
-- **Demo Video**: [Add YouTube/Loom link]
+- **Demo Video**: [(https://www.loom.com/share/2988230b54f14585ba6de0bd4a03c4b6)]
 
 ## ✨ Features
 
@@ -250,12 +250,7 @@ meeting-facilitator/
 4. Export functionality
 5. Voice output test]
 
-## 🔗 Links
 
-- **Backend Repo**: [Add link]
-- **Frontend Repo**: [Add link]
-  
-- **Demo Video**: [Add link]
 
 ## 🤝 Hackathon Details
 
@@ -280,9 +275,6 @@ meeting-facilitator/
 
 
 
-## 📄 License
-
-MIT License - see LICENSE file for details
 
 
 ## 📧 Contact
@@ -290,7 +282,7 @@ MIT License - see LICENSE file for details
 Built by [Your Name]  
 - GitHub: [@yourusername]
 - LinkedIn: [Your LinkedIn]
-- Email: your.email@example.com
+-
 
 ---
 
